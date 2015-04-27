@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+  </head>
+  <body>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+
+    <script>
+        
+        $.ajax({
+            type: "GET",
+            url: "https://maps.googleapis.com/maps/api/geocode/xml?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyBBKp-qLoz1isA5BCdl9WrBLI-M2HEnU8U&sensor=true",
+            dataType: "xml",
+            success: processXML
+        
+        });
+        
+        function processXML(xml){
+            
+        
+        $(xml).find("address_component").each(function() {
+         
+            if ( $(this).find("type").text() == "postal_code") {
+            
+            alert($(this).find("long_name").text());
+            
+            }
+            
+        });
+        }
+        
+        
+        
+        
+      
+    </script>
+
+
+
+  </body>
+</html>
+
+
+
+
